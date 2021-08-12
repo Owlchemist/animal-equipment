@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<ThingDef ParentName="AnimalScarfBase">
+		<defName>Apparel_AnimalScarf</defName>
+		<label>universal pet scarf</label>
+		<description>A stylish accessory for cool, laid back animals.</description>
+		<statBases>
+			<WorkToMake>1800</WorkToMake>
+			<MaxHitPoints>50</MaxHitPoints>
+			<MarketValue>50</MarketValue>
+			<Mass>0.1</Mass>
+		</statBases>
+		<costStuffCount>50</costStuffCount>
+		<apparel>
+			<tags>
+				<li>Animal</li>
+				<!-- <li>AnimalCUTOUTCOMPLEX</li> -->
+				<li>AnimalALL</li>
+			</tags>
+		</apparel>
+		<devNote>legacy[Apparel_SmallAnimalScarf,Apparel_LargeAnimalScarf]</devNote>
+	</ThingDef>
+</Defs>

@@ -1,0 +1,19 @@
+<Patch>
+  <Operation Class="VFECore.PatchOperationToggable">
+    <enabled>True</enabled>
+    <mods>
+      <li>Core</li>
+    </mods>
+    <label>Disable universal animal armor (placeholder art):</label>
+    <match Class="PatchOperationRemove">
+      <xpath>/Defs/ThingDef[defName="Apparel_AnimalPlateArmor" or 
+				defName="Apparel_AnimalPlateHelmet" or 
+				defName="Apparel_AnimalPowerArmor" or 
+				defName="Apparel_AnimalPowerArmorHelmet" or 
+				defName="Apparel_AnimalScarf" or 
+				defName="Apparel_AnimalClothes" or 
+				defName="Apparel_AnimalFlakArmor" or 
+			defName="Apparel_AnimalAdvancedHelmet"]/*/..</xpath>
+    </match>
+  </Operation>
+</Patch>
