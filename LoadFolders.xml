@@ -16,4 +16,7 @@
 		<li IfModActive="sarg.alphaanimals">Mods/sarg.alphaanimals</li>
 		<li IfModActive="oskarpotocki.vfe.vikings">Mods/oskarpotocki.vfe.vikings</li>
 	</v1.4>
+	<v1.6>
+		<li>1.6</li>
+	</v1.6>
 </loadFolders>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+  <!-- Fills the AnimalNeck group, modelled on Animal Apparel: Framework's own
+       1.6/Patches/Bodies.xml. Same shape, same two-operation dance: one operation adds the
+       <li> to bodies whose part already has a <groups> node, a second creates the node for
+       the parts that have none. Both carry <success>Always</success>, because a body that
+       matches neither is not a failure.
+
+       Two cases, and the second is the reason this file is longer than it looks:
+
+       1. The body HAS a Neck part - every quadruped, plus Bird and Monkey. AnimalNeck goes
+          on the neck, where a collar belongs.
+
+       2. The body has NO Neck part - BeetleLike, Snake, TurtleLike and most modded insect
+          bodies. Vanilla refuses to equip apparel whose body part group is absent from the
+          wearer's body, so without this fallback a collar would simply never be equippable
+          on those animals, silently. Dylan's Animal Gear had exactly that hole: it patched
+          a Neck group onto //li[def="Neck"] for the quadruped, bird, insect and snake body
+          files alike, which was a no-op for the two that have no neck. Here the head takes
+          the collar instead.
+
+          The fallback deliberately does NOT put those animals into AnimalHead: that is the
+          helmet group, and sharing it would make a collar and a helmet exclude each other.
+          It is the same body PART carrying two different groups, which is normal - the
+          framework's own patch already puts most parts in more than one.
+
+       contains(def, 'Head') is the framework's own idiom, inherited warts and all: it also
+       matches parts like HeadClaw. The consequence is only that such a part counts as
+       covered by a collar, which is harmless. -->
+
+  <!-- 1. Bodies that have a neck. -->
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/BodyDef[defName != 'Human']//li[def = 'Neck']/groups</xpath>
+    <success>Always</success>
+    <value>
+      <li>AnimalNeck</li>
+    </value>
+    <order>Append</order>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/BodyDef[defName != 'Human']//li[def = 'Neck' and not(groups)]</xpath>
+    <success>Always</success>
+    <value>
+      <groups>
+        <li>AnimalNeck</li>
+      </groups>
+    </value>
+    <order>Append</order>
+  </Operation>
+
+  <!-- 2. Bodies that have no neck: the head stands in for it. -->
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/BodyDef[defName != 'Human' and not(.//li[def = 'Neck'])]//li[contains(def, 'Head')]/groups</xpath>
+    <success>Always</success>
+    <value>
+      <li>AnimalNeck</li>
+    </value>
+    <order>Append</order>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/BodyDef[defName != 'Human' and not(.//li[def = 'Neck'])]//li[contains(def, 'Head') and not(groups)]</xpath>
+    <success>Always</success>
+    <value>
+      <groups>
+        <li>AnimalNeck</li>
+      </groups>
+    </value>
+    <order>Append</order>
+  </Operation>
+
+</Patch>

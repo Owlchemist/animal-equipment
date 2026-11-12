@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- 1.6 port. Headwear and riding gear.
+
+       The scarf keeps FullHead -> AnimalHead: it is headwear, not neckwear, and putting it on AnimalNeck
+       would make it exclude every collar. The riding gear moves from Neck to AnimalNeck and sits on the
+       Belt layer, so it does not exclude a collar either. Its drawData layer of 72 puts it above the
+       body armour at 70 and the collars at 71. -->
+
+  <ThingDef Name="AnimalScarfBase" ParentName="ApparelMakeableBase" Abstract="True">
+    <techLevel>Neolithic</techLevel>
+    <recipeMaker>
+      <researchPrerequisite />
+      <recipeUsers>
+        <li>ElectricTailoringBench</li>
+        <li>HandTailoringBench</li>
+        <li>CraftingSpot</li>
+      </recipeUsers>
+    </recipeMaker>
+    <graphicData>
+      <texPath>Things/Pawn/Animal/Apparel/Accessories/Scarf/animalscarf</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <WorkToMake>1200</WorkToMake>
+      <MaxHitPoints>50</MaxHitPoints>
+      <Mass>0.1</Mass>
+      <Flammability>0.9</Flammability>
+      <ArmorRating_Blunt>0.03</ArmorRating_Blunt>
+      <ArmorRating_Sharp>0.03</ArmorRating_Sharp>
+      <ArmorRating_Heat>0.01</ArmorRating_Heat>
+      <StuffEffectMultiplierInsulation_Cold>0.10</StuffEffectMultiplierInsulation_Cold>
+      <StuffEffectMultiplierInsulation_Heat>0.25</StuffEffectMultiplierInsulation_Heat>
+      <EquipDelay>1</EquipDelay>
+    </statBases>
+    <stuffCategories>
+      <li>Fabric</li>
+      <li>Leathery</li>
+    </stuffCategories>
+    <thingCategories>
+      <li>Animal_Apparel</li>
+    </thingCategories>
+    <generateAllowChance>0</generateAllowChance>
+    <apparel>
+      <careIfWornByCorpse>false</careIfWornByCorpse>
+      <bodyPartGroups>
+        <li>AnimalHead</li>
+      </bodyPartGroups>
+      <!-- A directory, not a file stem. -->
+      <wornGraphicPath>Things/Pawn/Animal/Apparel/Accessories/Scarf</wornGraphicPath>
+      <layers>
+        <li>OnSkin</li>
+      </layers>
+      <defaultOutfitTags>
+        <li>Anything</li>
+        <li>Soldier</li>
+        <li>Worker</li>
+      </defaultOutfitTags>
+      <canBeDesiredForIdeo>false</canBeDesiredForIdeo>
+    </apparel>
+    <colorGenerator Class="ColorGenerator_StandardApparel" />
+    <modExtensions>
+      <li Class="AnimalGear.AnimalApparelDefExtension">
+        <showCoverageForBodyType>QuadrupedAnimalWithPaws</showCoverageForBodyType>
+      </li>
+    </modExtensions>
+  </ThingDef>
+
+  <ThingDef ParentName="AnimalScarfBase">
+    <defName>Apparel_SmallAnimalScarf</defName>
+    <label>animal headwear</label>
+    <description>A specialized piece of headwear made of fabric or leather designed to fit an animal.</description>
+    <descriptionHyperlinks>
+      <ThingDef>Alpaca</ThingDef>
+      <ThingDef>Cobra</ThingDef>
+      <ThingDef>Fox_Arctic</ThingDef>
+      <ThingDef>Fox_Fennec</ThingDef>
+      <ThingDef>Fox_Red</ThingDef>
+      <ThingDef>Husky</ThingDef>
+      <ThingDef>LabradorRetriever</ThingDef>
+      <ThingDef>Lynx</ThingDef>
+      <ThingDef>Megascarab</ThingDef>
+      <ThingDef>Spelopede</ThingDef>
+      <ThingDef>Squirrel</ThingDef>
+      <ThingDef>Warg</ThingDef>
+      <ThingDef>Wolf_Arctic</ThingDef>
+      <ThingDef>Wolf_Timber</ThingDef>
+    </descriptionHyperlinks>
+    <statBases>
+      <WorkToMake>1200</WorkToMake>
+      <MaxHitPoints>50</MaxHitPoints>
+      <Mass>0.1</Mass>
+    </statBases>
+    <costStuffCount>25</costStuffCount>
+    <apparel>
+      <tags>
+        <li>AnimalApparel</li>
+        <li>AnimalOnly</li>
+        <li>AnimalFallbackInvisible</li>
+
+        <li>defNameAlpaca</li>
+        <li>defNameCobra</li>
+        <li>defNameFox_Arctic</li>
+        <li>defNameFox_Fennec</li>
+        <li>defNameFox_Red</li>
+        <li>defNameHusky</li>
+        <li>defNameLabradorRetriever</li>
+        <li>defNameLynx</li>
+        <li>defNameMegascarab</li>
+        <li>defNameSpelopede</li>
+        <li>defNameSquirrel</li>
+        <li>defNameWarg</li>
+        <li>defNameWolf_Arctic</li>
+        <li>defNameWolf_Timber</li>
+
+        <!-- Spidercamp's Dog Pack -->
+        <li MayRequireAnyOf="mlie.spidercampsdogpack,Qux.stray.dogs">defNameSCMiniatureDachshund</li>
+        <li MayRequireAnyOf="mlie.spidercampsdogpack,Qux.stray.dogs">defNameSCSchnauzer</li>
+        <li MayRequireAnyOf="mlie.spidercampsdogpack,Qux.stray.dogs">defNameSCWelshCorgi</li>
+        <li MayRequireAnyOf="mlie.spidercampsdogpack,Qux.stray.dogs">defNameSCPug</li>
+        <li MayRequireAnyOf="mlie.spidercampsdogpack,Qux.stray.dogs">defNameSCAfghanHound</li>
+        <li MayRequireAnyOf="mlie.spidercampsdogpack,Qux.stray.dogs">defNameSCBorderCollie</li>
+        <li MayRequireAnyOf="mlie.spidercampsdogpack,Qux.stray.dogs">defNameSCBullTerrier</li>
+        <li MayRequireAnyOf="mlie.spidercampsdogpack,Qux.stray.dogs">defNameSCChowchow</li>
+        <li MayRequireAnyOf="mlie.spidercampsdogpack,Qux.stray.dogs">defNameSCCollie</li>
+        <li MayRequireAnyOf="mlie.spidercampsdogpack,Qux.stray.dogs">defNameSCDoberman</li>
+        <li MayRequireAnyOf="mlie.spidercampsdogpack,Qux.stray.dogs">defNameSCGoldenRetriever</li>
+        <li MayRequireAnyOf="mlie.spidercampsdogpack,Qux.stray.dogs">defNameSCGreyhound</li>
+        <li MayRequireAnyOf="mlie.spidercampsdogpack,Qux.stray.dogs">defNameSCOldEnglishSheepdog</li>
+        <li MayRequireAnyOf="mlie.spidercampsdogpack,Qux.stray.dogs">defNameSCStandardPoodle</li>
+        <li MayRequireAnyOf="mlie.spidercampsdogpack,Qux.stray.dogs">defNameSCBorzoi</li>
+        <li MayRequireAnyOf="mlie.spidercampsdogpack,Qux.stray.dogs">defNameSCCaucasianshepherd</li>
+        <li MayRequireAnyOf="mlie.spidercampsdogpack,Qux.stray.dogs">defNameSCSaintbernard</li>
+        <li MayRequireAnyOf="mlie.spidercampsdogpack,Qux.stray.dogs">defNameSCNewFoundland</li>
+        <li MayRequireAnyOf="mlie.spidercampsdogpack,Qux.stray.dogs">defNameSCBullmastiff</li>
+      </tags>
+    </apparel>
+  </ThingDef>
+
+  <ThingDef ParentName="AnimalScarfBase">
+    <defName>Apparel_LargeAnimalScarf</defName>
+    <label>large animal headwear</label>
+    <description>A specialized piece of headwear made of fabric or leather designed to fit a large animal.</description>
+    <descriptionHyperlinks>
+      <ThingDef>Cougar</ThingDef>
+      <ThingDef>Cow</ThingDef>
+      <ThingDef>Horse</ThingDef>
+      <ThingDef>Megaspider</ThingDef>
+      <ThingDef>Megasloth</ThingDef>
+      <ThingDef>Muffalo</ThingDef>
+      <ThingDef>Panther</ThingDef>
+      <ThingDef>Thrumbo</ThingDef>
+    </descriptionHyperlinks>
+    <statBases>
+      <WorkToMake>2400</WorkToMake>
+      <MaxHitPoints>80</MaxHitPoints>
+      <Mass>0.15</Mass>
+    </statBases>
+    <costStuffCount>50</costStuffCount>
+    <apparel>
+      <tags>
+        <li>AnimalApparel</li>
+        <li>AnimalOnly</li>
+        <li>AnimalFallbackInvisible</li>
+
+        <li>defNameCougar</li>
+        <li>defNameCow</li>
+        <li>defNameHorse</li>
+        <li>defNameMegaspider</li>
+        <li>defNameMegasloth</li>
+        <li>defNameMuffalo</li>
+        <li>defNamePanther</li>
+        <li>defNameThrumbo</li>
+
+        <!-- Vanilla Animals Expanded - Desert -->
+        <li MayRequireAnyOf="VanillaExpanded.VAED,VanillaExpanded.VanillaAnimalsExpanded">defNameAEXP_Lion</li>
+      </tags>
+    </apparel>
+  </ThingDef>
+
+  <!-- +++++ Riding gear +++++ -->
+
+  <ThingDef Name="AnimalRidingBase" ParentName="ApparelMakeableBase" Abstract="True">
+    <techLevel>Neolithic</techLevel>
+    <recipeMaker>
+      <unfinishedThingDef>UnfinishedArmor</unfinishedThingDef>
+      <researchPrerequisite>AnimalRidingGear</researchPrerequisite>
+      <recipeUsers>
+        <li>ElectricTailoringBench</li>
+        <li>HandTailoringBench</li>
+        <li>CraftingSpot</li>
+      </recipeUsers>
+    </recipeMaker>
+    <thingCategories>
+      <li>Animal_Apparel</li>
+    </thingCategories>
+    <generateAllowChance>0</generateAllowChance>
+    <apparel>
+      <careIfWornByCorpse>false</careIfWornByCorpse>
+      <bodyPartGroups>
+        <li>AnimalNeck</li>
+      </bodyPartGroups>
+      <layers>
+        <li>Belt</li>
+      </layers>
+      <drawData>
+        <defaultData>
+          <layer>72</layer>
+        </defaultData>
+      </drawData>
+      <defaultOutfitTags>
+        <li>Anything</li>
+        <li>Soldier</li>
+        <li>Worker</li>
+      </defaultOutfitTags>
+      <canBeDesiredForIdeo>false</canBeDesiredForIdeo>
+    </apparel>
+    <colorGenerator Class="ColorGenerator_White" />
+    <equippedStatOffsets>
+      <MoveSpeed>0.1</MoveSpeed>
+    </equippedStatOffsets>
+    <modExtensions>
+      <li Class="AnimalGear.AnimalApparelDefExtension">
+        <showCoverageForBodyType>QuadrupedAnimalWithHooves</showCoverageForBodyType>
+      </li>
+    </modExtensions>
+  </ThingDef>
+
+  <ThingDef ParentName="AnimalRidingBase">
+    <defName>Apparel_bridle</defName>
+    <label>riding gear</label>
+    <description>Provides protection and a harness for riding.</description>
+    <descriptionHyperlinks>
+      <ThingDef>Elephant</ThingDef>
+      <ThingDef>Horse</ThingDef>
+      <ThingDef>Spelopede</ThingDef>
+      <ThingDef>Thrumbo</ThingDef>
+    </descriptionHyperlinks>
+    <graphicData>
+      <texPath>Things/Pawn/Animal/Apparel/Riding/RidingGear/ridinggear</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <WorkToMake>15000</WorkToMake>
+      <MaxHitPoints>110</MaxHitPoints>
+      <Mass>0.5</Mass>
+      <StuffEffectMultiplierArmor>0.1</StuffEffectMultiplierArmor>
+      <StuffEffectMultiplierInsulation_Cold>0.40</StuffEffectMultiplierInsulation_Cold>
+      <StuffEffectMultiplierInsulation_Heat>0.55</StuffEffectMultiplierInsulation_Heat>
+      <EquipDelay>3</EquipDelay>
+    </statBases>
+    <costStuffCount>60</costStuffCount>
+    <stuffCategories>
+      <li>Leathery</li>
+    </stuffCategories>
+    <costList>
+      <Steel>10</Steel>
+    </costList>
+    <apparel>
+      <!-- A directory, not a file stem. -->
+      <wornGraphicPath>Things/Pawn/Animal/Apparel/Riding/RidingGear</wornGraphicPath>
+      <tags>
+        <li>AnimalApparel</li>
+        <li>AnimalOnly</li>
+        <li>AnimalFallbackInvisible</li>
+
+        <li>defNameElephant</li>
+        <!-- Horse art exists only in the released Animal Equipment, not in its GitHub
+             master, and Owlchemist never added the tag to go with it. Added here. -->
+        <li>defNameHorse</li>
+        <li>defNameSpelopede</li>
+        <li>defNameThrumbo</li>
+      </tags>
+    </apparel>
+  </ThingDef>
+
+</Defs>

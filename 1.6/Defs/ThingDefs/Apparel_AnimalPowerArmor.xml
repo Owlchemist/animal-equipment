@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- 1.6 port. The spacer tier, which Animal Apparel: Basic Armor does not replace at any tech level.
+
+       Research: PoweredAnimalArmor hangs off vanilla PoweredArmor plus ComplexAnimalClothing, because
+       FlakAnimalArmor is not ported (Basic Armor provides flak). -->
+
+  <ThingDef Name="AnimalSpacerBase" ParentName="ArmorMachineableBase" Abstract="True">
+    <techLevel>Spacer</techLevel>
+    <recipeMaker>
+      <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+      <researchPrerequisite>PoweredAnimalArmor</researchPrerequisite>
+      <recipeUsers Inherit="False">
+        <li>FabricationBench</li>
+      </recipeUsers>
+      <skillRequirements>
+        <Crafting>9</Crafting>
+      </skillRequirements>
+    </recipeMaker>
+    <generateCommonality>0</generateCommonality>
+    <thingCategories>
+      <li>Animal_Apparel</li>
+    </thingCategories>
+    <thingSetMakerTags>
+      <li>RewardSpecial</li>
+    </thingSetMakerTags>
+    <colorGenerator Class="ColorGenerator_Options">
+      <options>
+        <li>
+          <weight>10</weight>
+          <only>(0.33,0.33,0.33)</only>
+        </li>
+        <li>
+          <weight>10</weight>
+          <only>(0.65,0.65,0.65)</only>
+        </li>
+        <li>
+          <weight>6</weight>
+          <min>(0.3,0.3,0.3)</min>
+          <max>(0.5,0.5,0.5)</max>
+        </li>
+        <li>
+          <weight>10</weight>
+          <only>(0.9,0.9,0.9)</only>
+        </li>
+      </options>
+    </colorGenerator>
+    <apparel>
+      <canBeDesiredForIdeo>false</canBeDesiredForIdeo>
+    </apparel>
+    <modExtensions>
+      <li Class="AnimalGear.AnimalApparelDefExtension">
+        <showCoverageForBodyType>QuadrupedAnimalWithPaws</showCoverageForBodyType>
+      </li>
+    </modExtensions>
+  </ThingDef>
+
+  <ThingDef Name="AnimalSpacerArmorBase" ParentName="AnimalSpacerBase" Abstract="True">
+    <statBases>
+      <WorkToMake>60000</WorkToMake>
+      <MaxHitPoints>340</MaxHitPoints>
+      <Mass>15</Mass>
+      <Flammability>0.4</Flammability>
+      <ArmorRating_Sharp>1.08</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.45</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.54</ArmorRating_Heat>
+      <Insulation_Cold>34</Insulation_Cold>
+      <Insulation_Heat>10</Insulation_Heat>
+      <EquipDelay>15</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <MoveSpeed>-0.4</MoveSpeed>
+    </equippedStatOffsets>
+    <apparel>
+      <bodyPartGroups>
+        <li>AnimalBody</li>
+        <li>AnimalNeck</li>
+        <li>AnimalLegs</li>
+      </bodyPartGroups>
+      <!-- A directory, not a file stem. -->
+      <wornGraphicPath>Things/Pawn/Animal/Apparel/Body/Power</wornGraphicPath>
+      <layers>
+        <li>Middle</li>
+        <li>Shell</li>
+      </layers>
+      <useDeflectMetalEffect>true</useDeflectMetalEffect>
+    </apparel>
+  </ThingDef>
+
+  <ThingDef ParentName="AnimalSpacerArmorBase">
+    <defName>Apparel_SmallAnimalPowerArmor</defName>
+    <label>animal power armor</label>
+    <description>A suit of light powered armor specially designed for combat animals. Layered plasteel-weave plates are very effective at stopping attacks, with few vulnerable joint sections. Neuro-memetic assistors allow an animal to wear the armor and still move easily.</description>
+    <descriptionHyperlinks>
+      <ThingDef>Alpaca</ThingDef>
+      <ThingDef>Boomrat</ThingDef>
+      <ThingDef>Capybara</ThingDef>
+      <ThingDef>Chicken</ThingDef>
+      <ThingDef>Chinchilla</ThingDef>
+      <ThingDef>Cobra</ThingDef>
+      <ThingDef>Fox_Arctic</ThingDef>
+      <ThingDef>Fox_Fennec</ThingDef>
+      <ThingDef>Fox_Red</ThingDef>
+      <ThingDef>Husky</ThingDef>
+      <ThingDef>Squirrel</ThingDef>
+      <ThingDef>Warg</ThingDef>
+    </descriptionHyperlinks>
+    <graphicData>
+      <texPath>Things/Pawn/Animal/Apparel/Body/Power/power</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <WorkToMake>60000</WorkToMake>
+      <MaxHitPoints>300</MaxHitPoints>
+      <Mass>12</Mass>
+    </statBases>
+    <costList>
+      <ComponentSpacer>4</ComponentSpacer>
+      <Plasteel>100</Plasteel>
+      <Uranium>20</Uranium>
+    </costList>
+    <apparel>
+      <tags>
+        <li>AnimalApparel</li>
+        <li>AnimalOnly</li>
+        <li>AnimalFallbackInvisible</li>
+
+        <li>defNameAlpaca</li>
+        <li>defNameBoomrat</li>
+        <li>defNameCapybara</li>
+        <li>defNameChicken</li>
+        <li>defNameChinchilla</li>
+        <li>defNameCobra</li>
+        <li>defNameFox_Arctic</li>
+        <li>defNameFox_Fennec</li>
+        <li>defNameFox_Red</li>
+        <li>defNameHusky</li>
+        <li>defNameSquirrel</li>
+        <li>defNameWarg</li>
+
+        <!-- Alpha Animals -->
+        <li MayRequire="sarg.alphaanimals">defNameAA_Animalisk</li>
+        <li MayRequire="sarg.alphaanimals">defNameAA_Feralisk</li>
+        <li MayRequire="sarg.alphaanimals">defNameAA_Junglelisk</li>
+      </tags>
+    </apparel>
+  </ThingDef>
+
+  <ThingDef ParentName="AnimalSpacerArmorBase">
+    <defName>Apparel_LargeAnimalPowerArmor</defName>
+    <label>large animal power armor</label>
+    <description>A suit of light powered armor specially designed for combat animals. Layered plasteel-weave plates are very effective at stopping attacks, with few vulnerable joint sections. Neuro-memetic assistors allow a large animal to wear the armor and still move easily.</description>
+    <descriptionHyperlinks>
+      <ThingDef>Bear_Grizzly</ThingDef>
+      <ThingDef>Bear_Polar</ThingDef>
+      <ThingDef>Boomalope</ThingDef>
+      <ThingDef>Cow</ThingDef>
+      <ThingDef>Dromedary</ThingDef>
+      <ThingDef>Elephant</ThingDef>
+      <ThingDef>Megasloth</ThingDef>
+      <ThingDef>Rhinoceros</ThingDef>
+      <ThingDef>Thrumbo</ThingDef>
+    </descriptionHyperlinks>
+    <graphicData>
+      <texPath>Things/Pawn/Animal/Apparel/Body/Power/power</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <WorkToMake>80000</WorkToMake>
+      <MaxHitPoints>350</MaxHitPoints>
+      <Mass>15</Mass>
+    </statBases>
+    <costList>
+      <ComponentSpacer>6</ComponentSpacer>
+      <Plasteel>200</Plasteel>
+      <Uranium>30</Uranium>
+    </costList>
+    <apparel>
+      <tags>
+        <li>AnimalApparel</li>
+        <li>AnimalOnly</li>
+        <li>AnimalFallbackInvisible</li>
+
+        <li>defNameBear_Grizzly</li>
+        <li>defNameBear_Polar</li>
+        <li>defNameBoomalope</li>
+        <li>defNameCow</li>
+        <li>defNameDromedary</li>
+        <li>defNameElephant</li>
+        <li>defNameMegasloth</li>
+        <li>defNameRhinoceros</li>
+        <li>defNameThrumbo</li>
+
+        <!-- Alpha Animals -->
+        <li MayRequire="sarg.alphaanimals">defNameAA_Blizzarisk</li>
+        <li MayRequire="sarg.alphaanimals">defNameAA_Cinderlisk</li>
+        <li MayRequire="sarg.alphaanimals">defNameAA_Dunealisk</li>
+        <li MayRequire="sarg.alphaanimals">defNameAA_MeadowAve</li>
+        <li MayRequire="sarg.alphaanimals">defNameAA_DesertAve</li>
+        <li MayRequire="sarg.alphaanimals">defNameAA_FrostAve</li>
+        <li MayRequire="sarg.alphaanimals">defNameAA_NightAve</li>
+        <li MayRequire="sarg.alphaanimals">defNameAA_RoyalAve</li>
+
+        <!-- Vanilla Factions Expanded - Vikings -->
+        <li MayRequire="OskarPotocki.VFE.Vikings">defNameVFEV_Fenrir</li>
+      </tags>
+    </apparel>
+  </ThingDef>
+
+  <!-- +++++ Power helmets +++++ -->
+
+  <ThingDef Name="AnimalSpacerHelmBase" ParentName="AnimalSpacerBase" Abstract="True">
+    <graphicData>
+      <texPath>Things/Pawn/Animal/Apparel/Head/Power/power</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <Flammability>0.4</Flammability>
+      <ArmorRating_Sharp>1.00</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.36</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.9</ArmorRating_Heat>
+      <Insulation_Cold>4</Insulation_Cold>
+      <Insulation_Heat>2</Insulation_Heat>
+      <EquipDelay>4</EquipDelay>
+    </statBases>
+    <apparel>
+      <bodyPartGroups>
+        <li>AnimalHead</li>
+      </bodyPartGroups>
+      <!-- A directory, not a file stem. -->
+      <wornGraphicPath>Things/Pawn/Animal/Apparel/Head/Power</wornGraphicPath>
+      <layers>
+        <li>Shell</li>
+      </layers>
+      <defaultOutfitTags>
+        <li>Anything</li>
+        <li>Soldier</li>
+      </defaultOutfitTags>
+      <useDeflectMetalEffect>true</useDeflectMetalEffect>
+    </apparel>
+  </ThingDef>
+
+  <ThingDef ParentName="AnimalSpacerHelmBase">
+    <defName>Apparel_SmallAnimalPowerArmorHelmet</defName>
+    <label>animal power helmet</label>
+    <description>A powered helmet with layered plasteel-weave plates, designed specifically for animals.</description>
+    <descriptionHyperlinks>
+      <ThingDef>Alpaca</ThingDef>
+      <ThingDef>Cat</ThingDef>
+      <ThingDef>Cobra</ThingDef>
+      <ThingDef>Fox_Arctic</ThingDef>
+      <ThingDef>Fox_Fennec</ThingDef>
+      <ThingDef>Fox_Red</ThingDef>
+      <ThingDef>Lynx</ThingDef>
+      <ThingDef>Megascarab</ThingDef>
+      <ThingDef>Spelopede</ThingDef>
+      <ThingDef>Squirrel</ThingDef>
+      <ThingDef>Warg</ThingDef>
+      <ThingDef>WildBoar</ThingDef>
+      <ThingDef>Wolf_Arctic</ThingDef>
+      <ThingDef>Wolf_Timber</ThingDef>
+    </descriptionHyperlinks>
+    <statBases>
+      <WorkToMake>21000</WorkToMake>
+      <MaxHitPoints>160</MaxHitPoints>
+      <Mass>2.7</Mass>
+    </statBases>
+    <costList>
+      <ComponentSpacer>1</ComponentSpacer>
+      <Plasteel>40</Plasteel>
+    </costList>
+    <apparel>
+      <tags>
+        <li>AnimalApparel</li>
+        <li>AnimalOnly</li>
+        <li>AnimalFallbackInvisible</li>
+
+        <li>defNameAlpaca</li>
+        <li>defNameCat</li>
+        <li>defNameCobra</li>
+        <li>defNameFox_Arctic</li>
+        <li>defNameFox_Fennec</li>
+        <li>defNameFox_Red</li>
+        <li>defNameLynx</li>
+        <li>defNameMegascarab</li>
+        <li>defNameSpelopede</li>
+        <li>defNameSquirrel</li>
+        <li>defNameWarg</li>
+        <li>defNameWildBoar</li>
+        <li>defNameWolf_Arctic</li>
+        <li>defNameWolf_Timber</li>
+      </tags>
+    </apparel>
+  </ThingDef>
+
+  <ThingDef ParentName="AnimalSpacerHelmBase">
+    <defName>Apparel_LargeAnimalPowerArmorHelmet</defName>
+    <label>large animal power helmet</label>
+    <description>A powered helmet with layered plasteel-weave plates, designed specifically for large animals.</description>
+    <descriptionHyperlinks>
+      <ThingDef>Bear_Grizzly</ThingDef>
+      <ThingDef>Bear_Polar</ThingDef>
+      <ThingDef>Cougar</ThingDef>
+      <ThingDef>Elephant</ThingDef>
+      <ThingDef>Megasloth</ThingDef>
+      <ThingDef>Panther</ThingDef>
+      <ThingDef>Rhinoceros</ThingDef>
+      <ThingDef>Thrumbo</ThingDef>
+    </descriptionHyperlinks>
+    <statBases>
+      <WorkToMake>31000</WorkToMake>
+      <MaxHitPoints>160</MaxHitPoints>
+      <Mass>2.7</Mass>
+    </statBases>
+    <costList>
+      <ComponentSpacer>1</ComponentSpacer>
+      <Plasteel>80</Plasteel>
+    </costList>
+    <apparel>
+      <tags>
+        <li>AnimalApparel</li>
+        <li>AnimalOnly</li>
+        <li>AnimalFallbackInvisible</li>
+
+        <li>defNameBear_Grizzly</li>
+        <li>defNameBear_Polar</li>
+        <li>defNameCougar</li>
+        <li>defNameElephant</li>
+        <li>defNameMegasloth</li>
+        <li>defNamePanther</li>
+        <li>defNameRhinoceros</li>
+        <li>defNameThrumbo</li>
+
+        <!-- Alpha Animals -->
+        <li MayRequire="sarg.alphaanimals">defNameAA_MeadowAve</li>
+        <li MayRequire="sarg.alphaanimals">defNameAA_DesertAve</li>
+        <li MayRequire="sarg.alphaanimals">defNameAA_FrostAve</li>
+        <li MayRequire="sarg.alphaanimals">defNameAA_NightAve</li>
+        <li MayRequire="sarg.alphaanimals">defNameAA_RoyalAve</li>
+
+        <!-- Vanilla Factions Expanded - Vikings -->
+        <li MayRequire="OskarPotocki.VFE.Vikings">defNameVFEV_Fenrir</li>
+      </tags>
+    </apparel>
+  </ThingDef>
+
+</Defs>

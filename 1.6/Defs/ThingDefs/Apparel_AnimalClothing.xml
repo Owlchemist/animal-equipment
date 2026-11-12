@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- 1.6 port, for Animal Apparel: Framework (Ingendum.AnimalApparelFramework). Clothing.
+
+       The flak and plate tiers are not ported: Animal Apparel: Basic Armor already provides them for 1.6.
+
+       The textures are restructured from the flat clothes_<Animal>_<rot>.png naming into the per-animal
+       folders the new framework resolves. AnimalCUTOUTCOMPLEX is gone from the tags: the framework picks
+       the CutoutComplex shader by itself when a <rot>m mask file sits beside the sprite.
+
+       Clothes cover Torso/Neck/Legs, so on the OnSkin layer they exclude a collar, as before. Body armour
+       sits on Middle and does not, which is why collars get their own AnimalNeck group. -->
+
+  <ThingDef Name="AnimalClothesBase" ParentName="ApparelMakeableBase" Abstract="True">
+    <techLevel>Neolithic</techLevel>
+    <recipeMaker>
+      <unfinishedThingDef>UnfinishedApparel</unfinishedThingDef>
+      <researchPrerequisite>ComplexAnimalClothing</researchPrerequisite>
+      <recipeUsers>
+        <li>ElectricTailoringBench</li>
+        <li>HandTailoringBench</li>
+      </recipeUsers>
+    </recipeMaker>
+    <graphicData>
+      <texPath>Things/Pawn/Animal/Apparel/Body/Cloth/clothes</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <StuffEffectMultiplierArmor>0.2</StuffEffectMultiplierArmor>
+      <StuffEffectMultiplierInsulation_Cold>0.26</StuffEffectMultiplierInsulation_Cold>
+      <StuffEffectMultiplierInsulation_Heat>0.10</StuffEffectMultiplierInsulation_Heat>
+      <EquipDelay>1.5</EquipDelay>
+    </statBases>
+    <stuffCategories>
+      <li>Fabric</li>
+      <li>Leathery</li>
+    </stuffCategories>
+    <thingCategories>
+      <li>Animal_Apparel</li>
+    </thingCategories>
+    <generateAllowChance>0</generateAllowChance>
+    <apparel>
+      <careIfWornByCorpse>false</careIfWornByCorpse>
+      <bodyPartGroups>
+        <li>AnimalBody</li>
+        <li>AnimalNeck</li>
+        <li>AnimalLegs</li>
+      </bodyPartGroups>
+      <!-- A directory, not a file stem. -->
+      <wornGraphicPath>Things/Pawn/Animal/Apparel/Body/Cloth</wornGraphicPath>
+      <layers>
+        <li>OnSkin</li>
+      </layers>
+      <defaultOutfitTags>
+        <li>Anything</li>
+        <li>Soldier</li>
+        <li>Worker</li>
+      </defaultOutfitTags>
+      <canBeDesiredForIdeo>false</canBeDesiredForIdeo>
+    </apparel>
+    <stuffProps>
+      <allowColorGenerators>false</allowColorGenerators>
+    </stuffProps>
+    <colorGenerator Class="ColorGenerator_StandardApparel" />
+    <modExtensions>
+      <li Class="AnimalGear.AnimalApparelDefExtension">
+        <showCoverageForBodyType>QuadrupedAnimalWithPaws</showCoverageForBodyType>
+      </li>
+    </modExtensions>
+  </ThingDef>
+
+  <ThingDef ParentName="AnimalClothesBase">
+    <defName>Apparel_SmallAnimalClothes</defName>
+    <label>animal clothes</label>
+    <description>Rugged apparel for animals. Provides protection against the elements, as well as minor scuffs and cuts.</description>
+    <descriptionHyperlinks>
+      <ThingDef>Alpaca</ThingDef>
+      <ThingDef>Cobra</ThingDef>
+      <ThingDef>Fox_Arctic</ThingDef>
+      <ThingDef>Fox_Fennec</ThingDef>
+      <ThingDef>Fox_Red</ThingDef>
+      <ThingDef>Lynx</ThingDef>
+      <ThingDef>Megascarab</ThingDef>
+      <ThingDef>Spelopede</ThingDef>
+      <ThingDef>Squirrel</ThingDef>
+      <ThingDef>Warg</ThingDef>
+    </descriptionHyperlinks>
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <WorkToMake>2700</WorkToMake>
+      <Mass>0.3</Mass>
+    </statBases>
+    <costStuffCount>45</costStuffCount>
+    <apparel>
+      <tags>
+        <li>AnimalApparel</li>
+        <li>AnimalOnly</li>
+        <li>AnimalFallbackInvisible</li>
+
+        <li>defNameAlpaca</li>
+        <li>defNameCobra</li>
+        <li>defNameFox_Arctic</li>
+        <li>defNameFox_Fennec</li>
+        <li>defNameFox_Red</li>
+        <li>defNameLynx</li>
+        <li>defNameMegascarab</li>
+        <li>defNameSpelopede</li>
+        <li>defNameSquirrel</li>
+        <li>defNameWarg</li>
+      </tags>
+    </apparel>
+  </ThingDef>
+
+  <ThingDef ParentName="AnimalClothesBase">
+    <defName>Apparel_LargeAnimalClothes</defName>
+    <label>large animal clothes</label>
+    <description>Rugged apparel for animals. Provides protection against the elements, as well as minor scuffs and cuts.</description>
+    <descriptionHyperlinks>
+      <ThingDef>Cougar</ThingDef>
+      <ThingDef>Cow</ThingDef>
+      <ThingDef>Elephant</ThingDef>
+      <ThingDef>Horse</ThingDef>
+      <ThingDef>Megaspider</ThingDef>
+      <ThingDef>Megasloth</ThingDef>
+      <ThingDef>Muffalo</ThingDef>
+      <ThingDef>Panther</ThingDef>
+      <ThingDef>Thrumbo</ThingDef>
+    </descriptionHyperlinks>
+    <statBases>
+      <MaxHitPoints>150</MaxHitPoints>
+      <WorkToMake>4200</WorkToMake>
+      <Mass>1</Mass>
+    </statBases>
+    <costStuffCount>80</costStuffCount>
+    <apparel>
+      <tags>
+        <li>AnimalApparel</li>
+        <li>AnimalOnly</li>
+        <li>AnimalFallbackInvisible</li>
+
+        <li>defNameCougar</li>
+        <li>defNameCow</li>
+        <li>defNameElephant</li>
+        <li>defNameHorse</li>
+        <li>defNameMegaspider</li>
+        <li>defNameMegasloth</li>
+        <li>defNameMuffalo</li>
+        <li>defNamePanther</li>
+        <li>defNameThrumbo</li>
+
+        <!-- Vanilla Animals Expanded - Desert -->
+        <li MayRequireAnyOf="VanillaExpanded.VAED,VanillaExpanded.VanillaAnimalsExpanded">defNameAEXP_Lion</li>
+      </tags>
+    </apparel>
+  </ThingDef>
+
+</Defs>

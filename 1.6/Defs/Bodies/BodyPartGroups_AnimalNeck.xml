@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- Animal Apparel: Framework defines exactly three groups for animals - AnimalHead,
+       AnimalBody and AnimalLegs - and its Bodies.xml puts the Neck part into AnimalBody,
+       because Neck is neither a head nor a leg. A collar therefore has nowhere of its own
+       to sit: it lands in the same group as the flak jacket and the plate armour.
+
+       AnimalNeck is a fourth group, filled by Patches/Bodies_AnimalNeck.xml. It is what
+       makes a collar a separate garment rather than a competitor for the body slot:
+       RimWorld refuses to wear two items together only when they share BOTH a body part
+       group and a layer, so a collar on AnimalNeck never conflicts with anything on
+       AnimalBody, whatever layer either of them uses.
+
+       Draw order is a different question and is not solved here. The framework gives every
+       piece of animal apparel the same baseLayer (70, from the single AnimalApparel render
+       tag), so items would otherwise stack in whatever order the animal happens to wear
+       them. Each collar sets <apparel><drawData><defaultData><layer> to override it - see
+       the comment on the collar defs.
+
+       listOrder 98 keeps it inside the framework's own block (AnimalHead 99, AnimalBody
+       100, AnimalLegs 101). That block is already inverted with respect to vanilla, where
+       higher means higher up the body; the value only affects the order parts are listed
+       in the coverage tooltip. -->
+  <BodyPartGroupDef>
+    <defName>AnimalNeck</defName>
+    <label>neck</label>
+    <listOrder>98</listOrder>
+  </BodyPartGroupDef>
+
+</Defs>

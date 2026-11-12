@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- 1.6 port. The 1.4 chain had five projects: riding gear, animal clothing, then plate -> flak ->
+       powered animal armour. Three come across, because Animal Apparel: Basic Armor provides the plate
+       and flak pieces and gates them on vanilla PlateArmor and FlakArmor. PoweredAnimalArmor therefore
+       hangs off vanilla PoweredArmor plus ComplexAnimalClothing, and researchViewX is renumbered so the
+       row has no gaps. The defNames are unchanged, so saves that had the projects researched keep them. -->
+
+  <ResearchTabDef>
+    <defName>AnimalGear</defName>
+    <label>animal gear</label>
+  </ResearchTabDef>
+
+  <ResearchProjectDef>
+    <defName>AnimalRidingGear</defName>
+    <label>riding gear</label>
+    <tab>AnimalGear</tab>
+    <description>Develop new equipment designs to improve animal riding.</description>
+    <baseCost>500</baseCost>
+    <techLevel>Neolithic</techLevel>
+    <researchViewX>0</researchViewX>
+    <researchViewY>1</researchViewY>
+  </ResearchProjectDef>
+
+  <ResearchProjectDef>
+    <defName>ComplexAnimalClothing</defName>
+    <label>animal clothing</label>
+    <tab>AnimalGear</tab>
+    <description>Adapt complex clothing to fit onto a variety of domestic animals.</description>
+    <baseCost>750</baseCost>
+    <techLevel>Medieval</techLevel>
+    <prerequisites>
+      <li>ComplexClothing</li>
+    </prerequisites>
+    <researchViewX>1</researchViewX>
+    <researchViewY>1</researchViewY>
+  </ResearchProjectDef>
+
+  <ResearchProjectDef>
+    <defName>PoweredAnimalArmor</defName>
+    <label>power armored animals</label>
+    <tab>AnimalGear</tab>
+    <description>Craft high-tech power armor made to fit onto domestic animals.</description>
+    <baseCost>8000</baseCost>
+    <techLevel>Spacer</techLevel>
+    <prerequisites>
+      <li>PoweredArmor</li>
+      <li>ComplexAnimalClothing</li>
+    </prerequisites>
+    <researchViewX>2</researchViewX>
+    <researchViewY>1</researchViewY>
+  </ResearchProjectDef>
+
+</Defs>
