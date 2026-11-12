@@ -16,7 +16,7 @@
     <defName>AnimalRidingGear</defName>
     <label>riding gear</label>
     <tab>AnimalGear</tab>
-    <description>Craft new equipment designs aimed to improve animal riding.</description>
+    <description>Develop new equipment designs to improve animal riding.</description>
     <baseCost>500</baseCost>
     <techLevel>Neolithic</techLevel>
     <researchViewX>0</researchViewX>
@@ -41,7 +41,7 @@
     <defName>PoweredAnimalArmor</defName>
     <label>power armored animals</label>
     <tab>AnimalGear</tab>
-    <description>Craft high tech power armor made to fit onto domestic animals.</description>
+    <description>Craft high-tech power armor made to fit onto domestic animals.</description>
     <baseCost>8000</baseCost>
     <techLevel>Spacer</techLevel>
     <prerequisites>
